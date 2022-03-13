@@ -8,6 +8,12 @@ fun main() {
         .split("\n", "\r\n")
         .drop(1)
 
+    File("badges").apply {
+        if (exists()) deleteRecursively()
+    }
+
+    File("badges").mkdir()
+
     val participants = inputCsv.map { participantCsv ->
         val values = participantCsv.split(";").drop(1)
         Participant(
